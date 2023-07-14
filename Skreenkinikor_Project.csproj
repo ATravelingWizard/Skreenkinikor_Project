@@ -1,0 +1,30 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net6.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Images\key-white.png" />
+    <None Remove="Images\LogInBG.png" />
+    <None Remove="Images\SK_Logo.png" />
+    <None Remove="Images\user-white.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="EntityFramework" Version="6.4.4" />
+    <PackageReference Include="FontAwesome.Sharp" Version="6.3.0" />
+    <PackageReference Include="System.Data.SqlClient" Version="4.8.5" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Images\user-white.png" />
+    <Resource Include="Images\key-white.png" />
+    <Resource Include="Images\LogInBG.png" />
+    <Resource Include="Images\SK_Logo.png" />
+  </ItemGroup>
+
+</Project>
