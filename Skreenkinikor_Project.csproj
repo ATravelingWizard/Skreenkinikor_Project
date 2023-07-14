@@ -5,6 +5,7 @@
     <TargetFramework>net6.0-windows</TargetFramework>
     <Nullable>enable</Nullable>
     <UseWPF>true</UseWPF>
+    <ApplicationIcon>Sterkinikor.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>
@@ -12,6 +13,10 @@
     <None Remove="Images\LogInBG.png" />
     <None Remove="Images\SK_Logo.png" />
     <None Remove="Images\user-white.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Sterkinikor.ico" />
   </ItemGroup>
 
   <ItemGroup>

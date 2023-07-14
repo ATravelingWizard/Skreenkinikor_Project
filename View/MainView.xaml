@@ -17,6 +17,32 @@
         <viewModel:MainViewModel/>
     </Window.DataContext>
 
+    <Window.Resources>
+        <DataTemplate DataType="{x:Type viewModel:VMHome}">
+            <local:HomeView/>
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type viewModel:VMActors}">
+            <local:ActorsView/>
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type viewModel:VMMovies}">
+            <local:MoviesView/>
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type viewModel:VMConfectionary}">
+            <local:ConfectionaryView/>
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type viewModel:VMReports}">
+            <local:ReportsView/>
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type viewModel:VMSettings}">
+            <local:SettingsView/>
+        </DataTemplate>
+    </Window.Resources>
+
     <Border CornerRadius = "15"
                 BorderThickness="3">
         <Border.BorderBrush>
@@ -60,7 +86,8 @@
                     <!--Home Nav Button-->
                     <RadioButton Style="{StaticResource navMenuButton1}"
                                  Tag="{StaticResource color1}"
-                                 IsChecked="True">
+                                 IsChecked="True"
+                                 Command="{Binding ShowHomeViewCommand}">
                         <StackPanel Orientation="Horizontal">
                             <icon:IconImage Icon="Home" Style="{StaticResource menuButtonIcon}"/>
                             <TextBlock Text="Home" Style="{StaticResource menuButtonText}"/>
@@ -68,7 +95,8 @@
                     </RadioButton>
                     <!--Movies Nav Button-->
                     <RadioButton Style="{StaticResource navMenuButton1}"
-                                 Tag="{StaticResource color1}">
+                                 Tag="{StaticResource color1}"
+                                 Command="{Binding ShowMovieViewCommand}">
                         <StackPanel Orientation="Horizontal">
                             <icon:IconImage Icon="Video" Style="{StaticResource menuButtonIcon}"/>
                             <TextBlock Text="Movies" Style="{StaticResource menuButtonText}"/>
@@ -76,7 +104,8 @@
                     </RadioButton>
                     <!--Actors Nav Button-->
                     <RadioButton Style="{StaticResource navMenuButton1}"
-                                 Tag="{StaticResource color1}">
+                                 Tag="{StaticResource color1}"
+                                 Command="{Binding ShowActorViewCommand}">
                         <StackPanel Orientation="Horizontal">
                             <icon:IconImage Icon="Person" Style="{StaticResource menuButtonIcon}"/>
                             <TextBlock Text="Actors" Style="{StaticResource menuButtonText}"/>
@@ -84,7 +113,8 @@
                     </RadioButton>
                     <!--Confec Nav Button-->
                     <RadioButton Style="{StaticResource navMenuButton1}"
-                                 Tag="{StaticResource color1}">
+                                 Tag="{StaticResource color1}"
+                                 Command="{Binding ShowConfectionaryViewCommand}">
                         <StackPanel Orientation="Horizontal">
                             <icon:IconImage Icon="BowlFood" Style="{StaticResource menuButtonIcon}"/>
                             <TextBlock Text="Confectionary" Style="{StaticResource menuButtonText}"/>
@@ -92,7 +122,8 @@
                     </RadioButton>
                     <!--Reports Nav Button-->
                     <RadioButton Style="{StaticResource navMenuButton1}"
-                                 Tag="{StaticResource color1}">
+                                 Tag="{StaticResource color1}"
+                                 Command="{Binding ShowReportsViewCommand}">
                         <StackPanel Orientation="Horizontal">
                             <icon:IconImage Icon="File" Style="{StaticResource menuButtonIcon}"/>
                             <TextBlock Text="Reports" Style="{StaticResource menuButtonText}"/>
@@ -100,7 +131,8 @@
                     </RadioButton>
                     <!--Settings Nav Button-->
                     <RadioButton Style="{StaticResource navMenuButton1}"
-                                 Tag="{StaticResource color1}">
+                                 Tag="{StaticResource color1}"
+                                 Command="{Binding ShowSettingsViewCommand}">
                         <StackPanel Orientation="Horizontal">
                             <icon:IconImage Icon="Gears" Style="{StaticResource menuButtonIcon}"/>
                             <TextBlock Text="Settings" Style="{StaticResource menuButtonText}"/>
@@ -165,19 +197,20 @@
                         <StackPanel Grid.Column="0"
                                     Orientation="Horizontal"
                                     VerticalAlignment="Center">
-                            <icon:IconImage Icon="Home"
-                                            Height="20"
-                                            Width="20"
-                                            Foreground="{StaticResource titleColor1}"
-                                            Margin="35,0,10,0"/>
-                            <TextBlock Text="Home"
-                                       Foreground="{StaticResource titleColor1}"
+                            <icon:IconImage Icon="{Binding Icon}"
+                                          Height="20"
+                                          Width="20"
+                                          Foreground="{StaticResource titleColor2}"
+                                          Margin="35,0,10,0"/>
+
+                            <TextBlock Text="{Binding Caption}"
+                                       Foreground="{StaticResource titleColor2}"
                                        FontSize="16"
                                        FontFamily="Montserrat"
                                        FontWeight="Medium"
                                        VerticalAlignment="Center"/>
-                        </StackPanel>
-                        <!--Userinfo section-->
+                            </StackPanel>
+                            <!--Userinfo section-->
                         <StackPanel Grid.Column="1"
                                     Orientation="Horizontal"
                                     FlowDirection="RightToLeft"
@@ -196,7 +229,7 @@
                         </StackPanel>
                     </Grid>
                     <!--Window section-->
-                    <ContentControl Content=""
+                    <ContentControl Content="{Binding CurrentVMChild}"
                                     Grid.Row="2"
                                     Margin="15"/>
                 </Grid>
