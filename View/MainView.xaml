@@ -57,6 +57,7 @@
                                    Margin="10,0,0,0"/>
                     </StackPanel>
                     <!--MENU BUTTONS-->
+                    <!--Home Nav Button-->
                     <RadioButton Style="{StaticResource navMenuButton1}"
                                  Tag="{StaticResource color1}"
                                  IsChecked="True">
@@ -65,6 +66,7 @@
                             <TextBlock Text="Home" Style="{StaticResource menuButtonText}"/>
                         </StackPanel>
                     </RadioButton>
+                    <!--Movies Nav Button-->
                     <RadioButton Style="{StaticResource navMenuButton1}"
                                  Tag="{StaticResource color1}">
                         <StackPanel Orientation="Horizontal">
@@ -72,6 +74,7 @@
                             <TextBlock Text="Movies" Style="{StaticResource menuButtonText}"/>
                         </StackPanel>
                     </RadioButton>
+                    <!--Actors Nav Button-->
                     <RadioButton Style="{StaticResource navMenuButton1}"
                                  Tag="{StaticResource color1}">
                         <StackPanel Orientation="Horizontal">
@@ -79,6 +82,7 @@
                             <TextBlock Text="Actors" Style="{StaticResource menuButtonText}"/>
                         </StackPanel>
                     </RadioButton>
+                    <!--Confec Nav Button-->
                     <RadioButton Style="{StaticResource navMenuButton1}"
                                  Tag="{StaticResource color1}">
                         <StackPanel Orientation="Horizontal">
@@ -86,6 +90,7 @@
                             <TextBlock Text="Confectionary" Style="{StaticResource menuButtonText}"/>
                         </StackPanel>
                     </RadioButton>
+                    <!--Reports Nav Button-->
                     <RadioButton Style="{StaticResource navMenuButton1}"
                                  Tag="{StaticResource color1}">
                         <StackPanel Orientation="Horizontal">
@@ -93,9 +98,18 @@
                             <TextBlock Text="Reports" Style="{StaticResource menuButtonText}"/>
                         </StackPanel>
                     </RadioButton>
+                    <!--Settings Nav Button-->
+                    <RadioButton Style="{StaticResource navMenuButton1}"
+                                 Tag="{StaticResource color1}">
+                        <StackPanel Orientation="Horizontal">
+                            <icon:IconImage Icon="Gears" Style="{StaticResource menuButtonIcon}"/>
+                            <TextBlock Text="Settings" Style="{StaticResource menuButtonText}"/>
+                        </StackPanel>
+                    </RadioButton>
                 </StackPanel>
             </Border>
-            <!--Content Color Gradient-->
+            <!--Content Area-->
+            
             <Border CornerRadius="0,10,10,0"
                     Grid.Column="1">
                 <Border.Background>
@@ -104,6 +118,26 @@
                         <GradientStop Color="{StaticResource primaryBackColor2}" Offset="0"/>
                     </LinearGradientBrush>
                 </Border.Background>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <!--Control bar-->
+                        <RowDefinition Height="25"/>
+                        <!--Header bar-->
+                        <RowDefinition Height="35"/>
+                        <!--Window section-->
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <!--Control-->
+                    <StackPanel x:Name="pnlControl"
+                                Grid.Row="0"
+                                Orientation="Horizontal"
+                                FlowDirection="RightToLeft"
+                                Background="Transparent"
+                                Margin="0,0,5,0"
+                                MouseLeftButtonDown="pnlControl_MouseLeftButtonDown"
+                                MouseEnter="pnlControl_MouseEnter">
+                    </StackPanel>
+                </Grid>
             </Border>
         </Grid>
     </Border>
