@@ -136,7 +136,26 @@
                                 Margin="0,0,5,0"
                                 MouseLeftButtonDown="pnlControl_MouseLeftButtonDown"
                                 MouseEnter="pnlControl_MouseEnter">
+                        <Button x:Name="btnClose"
+                                Style="{StaticResource controlBarButton1}"
+                                Tag="{StaticResource buttonColor3}"
+                                Click="btnClose_Click">
+                            <icon:IconImage Icon="Xmark" Style="{StaticResource controlBarButtonIcon1}"/>
+                        </Button>
+                        <Button x:Name="btnMax"
+                                Style="{StaticResource controlBarButton2}"
+                                Tag="{StaticResource buttonColor2}"
+                                Click="btnMax_Click">
+                            <icon:IconImage Icon="Square" Style="{StaticResource controlBarButtonIcon2}"/>
+                        </Button>
+                        <Button x:Name="btnMin"
+                                Style="{StaticResource controlBarButton2}"
+                                Tag="{StaticResource buttonColor2}"
+                                Click="btnMin_Click">
+                            <icon:IconImage Icon="WindowMinimize" Width="12" Style="{StaticResource controlBarButtonIcon2}"/>
+                        </Button>
                     </StackPanel>
+                    <!--Header content-->
                 </Grid>
             </Border>
         </Grid>

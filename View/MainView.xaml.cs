@@ -39,5 +39,27 @@ namespace Skreenkinikor_Project.View
         {
             this.MaxHeight = SystemParameters.MaximizedPrimaryScreenHeight;
         }
+
+        private void btnClose_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
+        }
+
+        private void btnMin_Click(object sender, RoutedEventArgs e)
+        {
+            WindowState = WindowState.Minimized;
+        }
+
+        private void btnMax_Click(object sender, RoutedEventArgs e)
+        {
+            if(this.WindowState == WindowState.Normal)
+            {
+                this.WindowState = WindowState.Maximized;
+            }
+            else
+            {
+                this.WindowState = WindowState.Normal;
+            }
+        }
     }
 }
