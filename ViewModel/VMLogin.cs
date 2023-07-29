@@ -15,7 +15,7 @@ namespace Skreenkinikor_Project.ViewModel
 {
     public class VMLogin : VMBase
     {
-        //Fields
+        //Fields to use for database
         private string _username;
         private SecureString _password;
         private string _errorMessage;
@@ -23,7 +23,7 @@ namespace Skreenkinikor_Project.ViewModel
 
         private IUserRepo userRep;
 
-        //PropertyMethods
+        //Property Methods
         public string Username 
         {
             get
@@ -72,7 +72,7 @@ namespace Skreenkinikor_Project.ViewModel
                 OnPropertyChanged(nameof(IsVisible));
             }
         }
-        //Commands
+        //Commands 
         public ICommand LoginCommand { get; }
         public ICommand ProblemCommand { get; }
         public ICommand ShowPassCommand { get; }
@@ -84,7 +84,7 @@ namespace Skreenkinikor_Project.ViewModel
             LoginCommand = new VMCommand(ExecuteLoginCommand, CanExecuteLoginCommand);
             ProblemCommand = new VMCommand(p => ExecuteErrorWithLoginCommand(""));
         }
-
+        //Checks if password and username param's are met
         private bool CanExecuteLoginCommand(object obj)
         {
             bool validData;
@@ -95,7 +95,7 @@ namespace Skreenkinikor_Project.ViewModel
                 validData = true;
             return validData;
         }
-
+        //Displays error message
         private void ExecuteLoginCommand(object obj)
         {
             var isUserValid = userRep.AuthUser(new NetworkCredential(Username, Password));
@@ -109,6 +109,7 @@ namespace Skreenkinikor_Project.ViewModel
                 ErrorMessage = "* Invalid Username and/or Password!";
             }
         }
+        //Not yet coded
         private void ExecuteErrorWithLoginCommand(string username)
         {
             throw new NotImplementedException();

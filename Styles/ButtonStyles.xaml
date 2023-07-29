@@ -2,6 +2,7 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:icons="http://schemas.awesome.incremented/wpf/xaml/fontawesome.sharp">
     
+    <!--Style for NavigationMenuButton1-->
     <Style x:Key="navMenuButton1" TargetType="RadioButton">
         <Setter Property="Height" Value="50"/>
         <Setter Property="Margin" Value="-5,0,0,5"/>
@@ -34,6 +35,7 @@
             </Trigger>
         </Style.Triggers>
     </Style>
+    
     <!--Menu Button icon-->
     <Style x:Key="menuButtonIcon" TargetType="icons:IconImage">
         <Setter Property="Foreground" Value="{Binding Path=Tag, RelativeSource={RelativeSource AncestorType=RadioButton}}"/>
@@ -41,7 +43,7 @@
         <Setter Property="Height" Value="22"/>
         <Setter Property="Margin" Value="35,0,20,0"/>
     </Style>
-    <!--Menu Button text-->
+    <!--Menu Button front style-->
     <Style x:Key="menuButtonText" TargetType="TextBlock">
         <Setter Property="Foreground" Value="{Binding Path=Foreground, RelativeSource={RelativeSource AncestorType=RadioButton}}"/>
         <Setter Property="FontFamily" Value="Montserrat"/>
@@ -49,7 +51,8 @@
         <Setter Property="FontSize" Value="13.5"/>
         <Setter Property="VerticalAlignment" Value="Center"/>
     </Style>
-
+    
+<!--Control Bar button style-->
     <Style x:Key="controlBarButton1" TargetType="Button">
         <Setter Property="Width" Value="35"/>
         <Setter Property="Background" Value="Transparent"/>
@@ -78,6 +81,7 @@
         <Setter Property="Height" Value="9"/>
     </Style>
     
+    <!--Control Button 2 style-->
     <Style x:Key="controlBarButton2" TargetType="Button">
         <Setter Property="Width" Value="35"/>
         <Setter Property="Background" Value="Transparent"/>
@@ -99,13 +103,14 @@
             </Trigger>
         </Style.Triggers>
     </Style>
-    <!--Controlbar Button icon-->
+    <!--Controlbar Button 2 icon-->
     <Style x:Key="controlBarButtonIcon2" TargetType="icons:IconImage">
         <Setter Property="Foreground" Value="{Binding Path=Foreground, RelativeSource={RelativeSource AncestorType=Button}}"/>
         <Setter Property="Width" Value="9"/>
         <Setter Property="Height" Value="9"/>
     </Style>
 
+    <!--User Controlbar button-->
     <Style x:Key="userControlButton" TargetType="Button">
         <Setter Property="Cursor" Value="Hand"/>
         <Setter Property="Width" Value="25"/>

@@ -16,30 +16,28 @@ namespace Skreenkinikor_Project.Repositories
         {
             throw new NotImplementedException();
         }
-
+        //Authenticates user credentials
         public bool AuthUser(NetworkCredential cred)
         {
             bool validUser;
-            using (var con=GetConnection())
-            using (var com=new SqlCommand())
+            using (var con=GetConnection())//Connection string
+            using (var com=new SqlCommand())//SQL command
             {
-                con.Open();
-                com.Connection = con;
-                com.CommandText = "SELECT * FROM [Login_Table] WHERE Username = @username AND [Password] = @password";
+                con.Open();//Opens Database
+                com.Connection = con;//Sets connection string
+                com.CommandText = "SELECT * FROM [Login_Table] WHERE Username = @username AND [Password] = @password"; //Sets command to grab username and password
                 com.Parameters.Add("@username", SqlDbType.NVarChar).Value = cred.UserName;
                 com.Parameters.Add("@password", SqlDbType.NVarChar).Value = cred.Password;
                 validUser = com.ExecuteScalar() == null ? false : true;
+                //Execute scalar - Retrieves single value from DB using command
+                //Will either return null (if DB is empty) or the first row first column (iterating downwards)
+                //True if user exists : False if user does not
 
             }
-                return validUser;
+                return validUser; //If true log-in = successful
         }
 
         public void Edit(UserModel userModel)
-        {
-            throw new NotImplementedException();
-        }
-
-        public IEnumerable<UserModel> GetAll()
         {
             throw new NotImplementedException();
         }
@@ -59,6 +57,7 @@ namespace Skreenkinikor_Project.Repositories
                 com.Connection = con;
                 com.CommandText = "SELECT * FROM [Login_Table] WHERE Username = @username";
                 com.Parameters.Add("@username", SqlDbType.NVarChar).Value = username;
+                //Get user info method, accesses info through reader
                 using (var reader = com.ExecuteReader())
                 {
                     if(reader.Read())
@@ -66,7 +65,6 @@ namespace Skreenkinikor_Project.Repositories
                         user = new UserModel()
                         {
                             Username = reader[1].ToString(),
-                            Password = String.Empty,
                             Name = reader[3].ToString(),
                             Lastname = reader[4].ToString(),
                         };
