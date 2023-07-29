@@ -22,8 +22,8 @@ namespace Skreenkinikor_Project.CustomControls
     public partial class bindPassword : UserControl
     {
         public static readonly DependencyProperty PasswordProperty = 
-            DependencyProperty.Register("Password", typeof(SecureString), typeof(bindPassword));
-
+            DependencyProperty.Register("Password", typeof(SecureString), typeof(bindPassword)); //Makes password secure
+        //Only way to retrieve text from a secure string 
         public SecureString Password
         {
             get
@@ -35,13 +35,13 @@ namespace Skreenkinikor_Project.CustomControls
                 SetValue(PasswordProperty, value);
             }
         }
-
+        //Sets password as it is being entered
         public bindPassword()
         {
             InitializeComponent();
             txtPassword.PasswordChanged += OnPassChange;
         }
-
+        //Makes password secure while typing
         private void OnPassChange(object sender, RoutedEventArgs e)
         {
             Password = txtPassword.SecurePassword;

@@ -14,13 +14,13 @@ namespace Skreenkinikor_Project.ViewModel
 {
     public class MainViewModel : VMBase
     {
-        //Fields
+        //Fields to be used in methods
         private AccountModel _currentUser;
         private VMBase _currentVMChild;
         private string _caption;
         private IconChar _icon;
         private IUserRepo _userRepo;
-
+        //Selects current logged in user
         public AccountModel CurrentUser 
         {
             get
@@ -34,7 +34,7 @@ namespace Skreenkinikor_Project.ViewModel
             }
         }
 
-        //Properties
+        //Properties used by exec methods
         public VMBase CurrentVMChild
         {
             get
@@ -66,37 +66,46 @@ namespace Skreenkinikor_Project.ViewModel
             }
         }
 
-        //Commands
+        //Init Commands (uses these commands in xaml to call children
         public ICommand ShowHomeViewCommand { get; }
         public ICommand ShowActorViewCommand { get; }
         public ICommand ShowMovieViewCommand { get; }
         public ICommand ShowConfectionaryViewCommand { get; }
         public ICommand ShowReportsViewCommand { get; }
         public ICommand ShowSettingsViewCommand { get; }
+        public ICommand ShowSalesViewCommand { get; }
 
         public MainViewModel()
         {
+            //Variables
             _userRepo = new UserRepo();
             CurrentUser = new AccountModel();
 
-            //Initialize Commands
+            //Initialize Show Commands
             ShowHomeViewCommand = new VMCommand(ExecuteHomeViewCommand);
             ShowActorViewCommand = new VMCommand(ExecuteShowActorViewCommand);
             ShowMovieViewCommand = new VMCommand(ExecuteShowMovieViewCommand);
             ShowConfectionaryViewCommand = new VMCommand(ExecuteConfectionaryViewCommand);
             ShowReportsViewCommand = new VMCommand(ExecuteReportsViewCommand);
             ShowSettingsViewCommand = new VMCommand(ExcuteSettingsViewCommand);
+            ShowSalesViewCommand = new VMCommand(ExecuteSalesViewCommand);
 
-
+            //Default methods on startup
             ExecuteHomeViewCommand(null);
             LoadCurrent();
         }
-
+        //Execute Display Window commands
         private void ExcuteSettingsViewCommand(object obj)
         {
-            CurrentVMChild = new VMSettings();
-            Caption = "Settings";
-            Icon = IconChar.Gears;
+            CurrentVMChild = new VMSettings(); //Sets Child of MainView to chosen view
+            Caption = "Settings"; //Caption (displayed in navbar and at the top of content
+            Icon = IconChar.Gears; //Icon (displayed in navbar and next to content title
+        }
+        private void ExecuteSalesViewCommand(object obj)
+        {
+            CurrentVMChild = new VMSales();
+            Caption = "Sales";
+            Icon = IconChar.Dollar;
         }
 
         private void ExecuteReportsViewCommand(object obj)
@@ -134,6 +143,7 @@ namespace Skreenkinikor_Project.ViewModel
             Icon = IconChar.Home;
         }
 
+        //Load current logged in user
         private void LoadCurrent()
         {
             var user = _userRepo.GetUsername(Thread.CurrentPrincipal.Identity.Name);
@@ -141,7 +151,6 @@ namespace Skreenkinikor_Project.ViewModel
             {
                 CurrentUser.Username = user.Username;
                 CurrentUser.DisplayUser = $"{user.Name} {user.Lastname}";
-                CurrentUser.pfp = null;
             }
             else
             {

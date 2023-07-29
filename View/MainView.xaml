@@ -7,7 +7,7 @@
         xmlns:viewModel="clr-namespace:Skreenkinikor_Project.ViewModel"
         xmlns:icon="http://schemas.awesome.incremented/wpf/xaml/fontawesome.sharp"
         mc:Ignorable="d"
-        Title="MainView" Height="450" Width="800"
+        Title="MainView" Height="550" Width="800"
         WindowStartupLocation="CenterScreen"
         WindowStyle="None"
         Background="Transparent"
@@ -16,7 +16,8 @@
     <Window.DataContext>
         <viewModel:MainViewModel/>
     </Window.DataContext>
-
+    <!--Window Resource Binding
+    Add ViewModel here to bind to Display view-->
     <Window.Resources>
         <DataTemplate DataType="{x:Type viewModel:VMHome}">
             <local:HomeView/>
@@ -41,8 +42,12 @@
         <DataTemplate DataType="{x:Type viewModel:VMSettings}">
             <local:SettingsView/>
         </DataTemplate>
-    </Window.Resources>
 
+        <DataTemplate DataType="{x:Type viewModel:VMSales}">
+            <local:SalesView/>
+        </DataTemplate>
+    </Window.Resources>
+    <!--Display window variables and definitions-->
     <Border CornerRadius = "15"
                 BorderThickness="3">
         <Border.BorderBrush>
@@ -52,7 +57,7 @@
                 <GradientStop Color="{StaticResource winBorderColor3}" Offset="1"/>
             </LinearGradientBrush>
         </Border.BorderBrush>
-        <Grid>
+        <Grid> <!--Main display grid-->
             <Grid.ColumnDefinitions>
                 <!--Nav Menu-->
                 <ColumnDefinition Width="250"/>
@@ -91,6 +96,15 @@
                         <StackPanel Orientation="Horizontal">
                             <icon:IconImage Icon="Home" Style="{StaticResource menuButtonIcon}"/>
                             <TextBlock Text="Home" Style="{StaticResource menuButtonText}"/>
+                        </StackPanel>
+                    </RadioButton>
+                    <!--Sales Nav Button-->
+                    <RadioButton Style="{StaticResource navMenuButton1}"
+                                 Tag="{StaticResource color1}"
+                                 Command="{Binding ShowSalesViewCommand}">
+                        <StackPanel Orientation="Horizontal">
+                            <icon:IconImage Icon="Dollar" Style="{StaticResource menuButtonIcon}"/>
+                            <TextBlock Text="Sales" Style="{StaticResource menuButtonText}"/>
                         </StackPanel>
                     </RadioButton>
                     <!--Movies Nav Button-->
@@ -140,8 +154,8 @@
                     </RadioButton>
                 </StackPanel>
             </Border>
-            <!--Content Area-->
-            
+            <!--Content Area
+            and variables-->
             <Border CornerRadius="0,10,10,0"
                     Grid.Column="1">
                 <Border.Background>
@@ -159,7 +173,7 @@
                         <!--Window section-->
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
-                    <!--Control-->
+                    <!--Control Panel (minimize, maximize, close)-->
                     <StackPanel x:Name="pnlControl"
                                 Grid.Row="0"
                                 Orientation="Horizontal"
@@ -168,18 +182,21 @@
                                 Margin="0,0,5,0"
                                 MouseLeftButtonDown="pnlControl_MouseLeftButtonDown"
                                 MouseEnter="pnlControl_MouseEnter">
+                        <!--Close button (uses controlBar1 style and col3 tag)-->
                         <Button x:Name="btnClose"
                                 Style="{StaticResource controlBarButton1}"
                                 Tag="{StaticResource buttonColor3}"
                                 Click="btnClose_Click">
                             <icon:IconImage Icon="Xmark" Style="{StaticResource controlBarButtonIcon1}"/>
                         </Button>
+                        <!--Maximize button (uses controlBar2 style and col2 tag)-->
                         <Button x:Name="btnMax"
                                 Style="{StaticResource controlBarButton2}"
                                 Tag="{StaticResource buttonColor2}"
                                 Click="btnMax_Click">
                             <icon:IconImage Icon="Square" Style="{StaticResource controlBarButtonIcon2}"/>
                         </Button>
+                        <!--Minimize button (uses controlBar2 style and col2 tag)-->
                         <Button x:Name="btnMin"
                                 Style="{StaticResource controlBarButton2}"
                                 Tag="{StaticResource buttonColor2}"
@@ -197,12 +214,13 @@
                         <StackPanel Grid.Column="0"
                                     Orientation="Horizontal"
                                     VerticalAlignment="Center">
+                            <!--Displays Active window icon-->
                             <icon:IconImage Icon="{Binding Icon}"
                                           Height="20"
                                           Width="20"
                                           Foreground="{StaticResource titleColor2}"
                                           Margin="35,0,10,0"/>
-
+                            <!--Displays Active window caption-->
                             <TextBlock Text="{Binding Caption}"
                                        Foreground="{StaticResource titleColor2}"
                                        FontSize="16"
@@ -216,11 +234,12 @@
                                     FlowDirection="RightToLeft"
                                     VerticalAlignment="Center"
                                     Margin="0,0,10,0">
+                            <!--Logout Dropdown icon-->
                             <Button Style="{StaticResource userControlButton}"
                                     Tag="{StaticResource buttonColor1}">
                                 <icon:IconImage Icon="AngleDown" Width="12" Style="{StaticResource userControlIcon}"/>
                             </Button>
-
+                            <!--Active user info block-->
                             <TextBlock Text="{Binding CurrentUser.DisplayUser}"
                                        Foreground="{StaticResource titleColor1}"
                                        FontFamily="Montserrat"

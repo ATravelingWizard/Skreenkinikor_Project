@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Skreenkinikor_Project.Model
-{
+{   //User repository housing add remove edit and authenticate methods to manage User database
     public interface IUserRepo
     {
         bool AuthUser(NetworkCredential cred);

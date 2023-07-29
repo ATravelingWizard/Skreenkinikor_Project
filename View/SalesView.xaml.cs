@@ -16,18 +16,13 @@ using System.Windows.Shapes;
 namespace Skreenkinikor_Project.View
 {
     /// <summary>
-    /// Interaction logic for ActorsView.xaml
+    /// Interaction logic for SalesView.xaml
     /// </summary>
-    public partial class ActorsView : UserControl
+    public partial class SalesView : UserControl
     {
-        public ActorsView()
+        public SalesView()
         {
             InitializeComponent();
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-
         }
     }
 }
