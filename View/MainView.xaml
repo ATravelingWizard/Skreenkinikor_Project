@@ -7,7 +7,7 @@
         xmlns:viewModel="clr-namespace:Skreenkinikor_Project.ViewModel"
         xmlns:icon="http://schemas.awesome.incremented/wpf/xaml/fontawesome.sharp"
         mc:Ignorable="d"
-        Title="MainView" Height="550" Width="800"
+        Title="MainView" Height="600" Width="800"
         WindowStartupLocation="CenterScreen"
         WindowStyle="None"
         Background="Transparent"
@@ -43,9 +43,18 @@
             <local:SettingsView/>
         </DataTemplate>
 
-        <DataTemplate DataType="{x:Type viewModel:VMSales}">
-            <local:SalesView/>
+        <DataTemplate DataType="{x:Type viewModel:VMSchedule}">
+            <local:ScheduleView/>
         </DataTemplate>
+
+        <DataTemplate DataType="{x:Type viewModel:VMTickets}">
+            <local:TicketsView/>
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type viewModel:VMStock}">
+            <local:StockView/>
+        </DataTemplate>
+
     </Window.Resources>
     <!--Display window variables and definitions-->
     <Border CornerRadius = "15"
@@ -101,19 +110,28 @@
                     <!--Sales Nav Button-->
                     <RadioButton Style="{StaticResource navMenuButton1}"
                                  Tag="{StaticResource color1}"
-                                 Command="{Binding ShowSalesViewCommand}">
+                                 Command="{Binding ShowTicketViewCommand}">
                         <StackPanel Orientation="Horizontal">
-                            <icon:IconImage Icon="Dollar" Style="{StaticResource menuButtonIcon}"/>
-                            <TextBlock Text="Sales" Style="{StaticResource menuButtonText}"/>
+                            <icon:IconImage Icon="Ticket" Style="{StaticResource menuButtonIcon}"/>
+                            <TextBlock Text="Ticket Sale" Style="{StaticResource menuButtonText}"/>
                         </StackPanel>
                     </RadioButton>
-                    <!--Movies Nav Button-->
+                    <!--Confec Nav Button-->
                     <RadioButton Style="{StaticResource navMenuButton1}"
                                  Tag="{StaticResource color1}"
-                                 Command="{Binding ShowMovieViewCommand}">
+                                 Command="{Binding ShowConfectionaryViewCommand}">
                         <StackPanel Orientation="Horizontal">
-                            <icon:IconImage Icon="Video" Style="{StaticResource menuButtonIcon}"/>
-                            <TextBlock Text="Movies" Style="{StaticResource menuButtonText}"/>
+                            <icon:IconImage Icon="BowlFood" Style="{StaticResource menuButtonIcon}"/>
+                            <TextBlock Text="Confectionary Sale" Style="{StaticResource menuButtonText}"/>
+                        </StackPanel>
+                    </RadioButton>
+                    <!--Schedule Nav Button-->
+                    <RadioButton Style="{StaticResource navMenuButton1}"
+                                 Tag="{StaticResource color1}"
+                                 Command="{Binding ShowScheduleViewCommand}">
+                        <StackPanel Orientation="Horizontal">
+                            <icon:IconImage Icon="Calendar" Style="{StaticResource menuButtonIcon}"/>
+                            <TextBlock Text="Schedule" Style="{StaticResource menuButtonText}"/>
                         </StackPanel>
                     </RadioButton>
                     <!--Actors Nav Button-->
@@ -125,22 +143,31 @@
                             <TextBlock Text="Actors" Style="{StaticResource menuButtonText}"/>
                         </StackPanel>
                     </RadioButton>
-                    <!--Confec Nav Button-->
-                    <RadioButton Style="{StaticResource navMenuButton1}"
-                                 Tag="{StaticResource color1}"
-                                 Command="{Binding ShowConfectionaryViewCommand}">
-                        <StackPanel Orientation="Horizontal">
-                            <icon:IconImage Icon="BowlFood" Style="{StaticResource menuButtonIcon}"/>
-                            <TextBlock Text="Confectionary" Style="{StaticResource menuButtonText}"/>
-                        </StackPanel>
-                    </RadioButton>
                     <!--Reports Nav Button-->
                     <RadioButton Style="{StaticResource navMenuButton1}"
                                  Tag="{StaticResource color1}"
                                  Command="{Binding ShowReportsViewCommand}">
                         <StackPanel Orientation="Horizontal">
                             <icon:IconImage Icon="File" Style="{StaticResource menuButtonIcon}"/>
-                            <TextBlock Text="Reports" Style="{StaticResource menuButtonText}"/>
+                            <TextBlock Text="Generate Reports" Style="{StaticResource menuButtonText}"/>
+                        </StackPanel>
+                    </RadioButton>
+                    <!--Stock Nav Button-->
+                    <RadioButton Style="{StaticResource navMenuButton1}"
+                                 Tag="{StaticResource color1}"
+                                 Command="{Binding ShowStockViewCommand}">
+                        <StackPanel Orientation="Horizontal">
+                            <icon:IconImage Icon="BasketShopping" Style="{StaticResource menuButtonIcon}"/>
+                            <TextBlock Text="Manage Stock" Style="{StaticResource menuButtonText}"/>
+                        </StackPanel>
+                    </RadioButton>
+                    <!--Movies Nav Button-->
+                    <RadioButton Style="{StaticResource navMenuButton1}"
+                                 Tag="{StaticResource color1}"
+                                 Command="{Binding ShowMoviesViewCommand}">
+                        <StackPanel Orientation="Horizontal">
+                            <icon:IconImage Icon="VideoCamera" Style="{StaticResource menuButtonIcon}"/>
+                            <TextBlock Text="Manage Movies" Style="{StaticResource menuButtonText}"/>
                         </StackPanel>
                     </RadioButton>
                     <!--Settings Nav Button-->

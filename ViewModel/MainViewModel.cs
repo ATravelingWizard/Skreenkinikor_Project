@@ -69,11 +69,13 @@ namespace Skreenkinikor_Project.ViewModel
         //Init Commands (uses these commands in xaml to call children
         public ICommand ShowHomeViewCommand { get; }
         public ICommand ShowActorViewCommand { get; }
-        public ICommand ShowMovieViewCommand { get; }
+        public ICommand ShowScheduleViewCommand { get; }
         public ICommand ShowConfectionaryViewCommand { get; }
         public ICommand ShowReportsViewCommand { get; }
         public ICommand ShowSettingsViewCommand { get; }
-        public ICommand ShowSalesViewCommand { get; }
+        public ICommand ShowMoviesViewCommand { get; }
+        public ICommand ShowTicketViewCommand { get; }
+        public ICommand ShowStockViewCommand { get; }
 
         public MainViewModel()
         {
@@ -84,28 +86,44 @@ namespace Skreenkinikor_Project.ViewModel
             //Initialize Show Commands
             ShowHomeViewCommand = new VMCommand(ExecuteHomeViewCommand);
             ShowActorViewCommand = new VMCommand(ExecuteShowActorViewCommand);
-            ShowMovieViewCommand = new VMCommand(ExecuteShowMovieViewCommand);
+            ShowScheduleViewCommand = new VMCommand(ExecuteShowScheduleViewCommand);
             ShowConfectionaryViewCommand = new VMCommand(ExecuteConfectionaryViewCommand);
             ShowReportsViewCommand = new VMCommand(ExecuteReportsViewCommand);
             ShowSettingsViewCommand = new VMCommand(ExcuteSettingsViewCommand);
-            ShowSalesViewCommand = new VMCommand(ExecuteSalesViewCommand);
+            ShowMoviesViewCommand = new VMCommand(ExecuteMoviesViewCommand);
+            ShowTicketViewCommand = new VMCommand(ExecuteTicketViewCommand);
+            ShowStockViewCommand = new VMCommand(ExecuteStockViewCommand);
 
             //Default methods on startup
             ExecuteHomeViewCommand(null);
             LoadCurrent();
         }
+
         //Execute Display Window commands
+        
         private void ExcuteSettingsViewCommand(object obj)
         {
             CurrentVMChild = new VMSettings(); //Sets Child of MainView to chosen view
             Caption = "Settings"; //Caption (displayed in navbar and at the top of content
             Icon = IconChar.Gears; //Icon (displayed in navbar and next to content title
         }
-        private void ExecuteSalesViewCommand(object obj)
+        private void ExecuteTicketViewCommand(object obj)
         {
-            CurrentVMChild = new VMSales();
-            Caption = "Sales";
-            Icon = IconChar.Dollar;
+            CurrentVMChild = new VMTickets();
+            Caption = "Ticket Sales";
+            Icon = IconChar.Ticket;
+        }
+        private void ExecuteStockViewCommand(object obj)
+        {
+            CurrentVMChild = new VMStock();
+            Caption = "Manage Stock";
+            Icon = IconChar.BasketShopping;
+        }
+        private void ExecuteMoviesViewCommand(object obj)
+        {
+            CurrentVMChild = new VMMovies();
+            Caption = "Manage Movies";
+            Icon = IconChar.VideoCamera;
         }
 
         private void ExecuteReportsViewCommand(object obj)
@@ -122,11 +140,11 @@ namespace Skreenkinikor_Project.ViewModel
             Icon = IconChar.BowlFood;
         }
 
-        private void ExecuteShowMovieViewCommand(object obj)
+        private void ExecuteShowScheduleViewCommand(object obj)
         {
-            CurrentVMChild = new VMMovies();
-            Caption = "Movies";
-            Icon = IconChar.Video;
+            CurrentVMChild = new VMSchedule();
+            Caption = "Schedule";
+            Icon = IconChar.Calendar;
         }
 
         private void ExecuteShowActorViewCommand(object obj)

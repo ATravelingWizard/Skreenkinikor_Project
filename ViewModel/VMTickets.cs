@@ -6,8 +6,7 @@ using System.Threading.Tasks;
 
 namespace Skreenkinikor_Project.ViewModel
 {
-    public class VMSales : VMBase
+    internal class VMTickets : VMBase
     {
-
     }
 }

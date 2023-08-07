@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace Skreenkinikor_Project.View
 {
     /// <summary>
-    /// Interaction logic for SalesView.xaml
+    /// Interaction logic for TicketsView.xaml
     /// </summary>
-    public partial class SalesView : UserControl
+    public partial class TicketsView : UserControl
     {
-        public SalesView()
+        public TicketsView()
         {
             InitializeComponent();
         }
