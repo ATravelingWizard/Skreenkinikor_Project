@@ -143,15 +143,6 @@
                             <TextBlock Text="Actors" Style="{StaticResource menuButtonText}"/>
                         </StackPanel>
                     </RadioButton>
-                    <!--Reports Nav Button-->
-                    <RadioButton Style="{StaticResource navMenuButton1}"
-                                 Tag="{StaticResource color1}"
-                                 Command="{Binding ShowReportsViewCommand}">
-                        <StackPanel Orientation="Horizontal">
-                            <icon:IconImage Icon="File" Style="{StaticResource menuButtonIcon}"/>
-                            <TextBlock Text="Generate Reports" Style="{StaticResource menuButtonText}"/>
-                        </StackPanel>
-                    </RadioButton>
                     <!--Stock Nav Button-->
                     <RadioButton Style="{StaticResource navMenuButton1}"
                                  Tag="{StaticResource color1}"
@@ -168,6 +159,15 @@
                         <StackPanel Orientation="Horizontal">
                             <icon:IconImage Icon="VideoCamera" Style="{StaticResource menuButtonIcon}"/>
                             <TextBlock Text="Manage Movies" Style="{StaticResource menuButtonText}"/>
+                        </StackPanel>
+                    </RadioButton>
+                    <!--Reports Nav Button-->
+                    <RadioButton Style="{StaticResource navMenuButton1}"
+                                 Tag="{StaticResource color1}"
+                                 Command="{Binding ShowReportsViewCommand}">
+                        <StackPanel Orientation="Horizontal">
+                            <icon:IconImage Icon="File" Style="{StaticResource menuButtonIcon}"/>
+                            <TextBlock Text="Generate Reports" Style="{StaticResource menuButtonText}"/>
                         </StackPanel>
                     </RadioButton>
                     <!--Settings Nav Button-->
