@@ -19,20 +19,34 @@
     <!--Window Resource Binding
     Add ViewModel here to bind to Display view-->
     <Window.Resources>
+        <!--Visibility Key-->
+        <BooleanToVisibilityConverter x:Key="BoolToVis"/>
         <DataTemplate DataType="{x:Type viewModel:VMHome}">
             <local:HomeView/>
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type viewModel:VMTickets}">
+            <local:TicketsView/>
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type viewModel:VMConfectionary}">
+            <local:ConfectionaryView/>
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type viewModel:VMSchedule}">
+            <local:ScheduleView/>
         </DataTemplate>
 
         <DataTemplate DataType="{x:Type viewModel:VMActors}">
             <local:ActorsView/>
         </DataTemplate>
 
-        <DataTemplate DataType="{x:Type viewModel:VMMovies}">
-            <local:MoviesView/>
+        <DataTemplate DataType="{x:Type viewModel:VMStock}">
+            <local:StockView/>
         </DataTemplate>
 
-        <DataTemplate DataType="{x:Type viewModel:VMConfectionary}">
-            <local:ConfectionaryView/>
+        <DataTemplate DataType="{x:Type viewModel:VMMovies}">
+            <local:MoviesView/>
         </DataTemplate>
 
         <DataTemplate DataType="{x:Type viewModel:VMReports}">
@@ -41,18 +55,6 @@
 
         <DataTemplate DataType="{x:Type viewModel:VMSettings}">
             <local:SettingsView/>
-        </DataTemplate>
-
-        <DataTemplate DataType="{x:Type viewModel:VMSchedule}">
-            <local:ScheduleView/>
-        </DataTemplate>
-
-        <DataTemplate DataType="{x:Type viewModel:VMTickets}">
-            <local:TicketsView/>
-        </DataTemplate>
-
-        <DataTemplate DataType="{x:Type viewModel:VMStock}">
-            <local:StockView/>
         </DataTemplate>
 
     </Window.Resources>
@@ -133,6 +135,9 @@
                             <icon:IconImage Icon="Calendar" Style="{StaticResource menuButtonIcon}"/>
                             <TextBlock Text="Schedule" Style="{StaticResource menuButtonText}"/>
                         </StackPanel>
+                        <RadioButton.Visibility>
+                            <Binding Path="IsAdmin" Converter="{StaticResource BoolToVis}" />
+                        </RadioButton.Visibility>
                     </RadioButton>
                     <!--Actors Nav Button-->
                     <RadioButton Style="{StaticResource navMenuButton1}"
@@ -142,6 +147,9 @@
                             <icon:IconImage Icon="Person" Style="{StaticResource menuButtonIcon}"/>
                             <TextBlock Text="Actors" Style="{StaticResource menuButtonText}"/>
                         </StackPanel>
+                        <RadioButton.Visibility>
+                            <Binding Path="IsAdmin" Converter="{StaticResource BoolToVis}" />
+                        </RadioButton.Visibility>
                     </RadioButton>
                     <!--Stock Nav Button-->
                     <RadioButton Style="{StaticResource navMenuButton1}"
@@ -151,6 +159,9 @@
                             <icon:IconImage Icon="BasketShopping" Style="{StaticResource menuButtonIcon}"/>
                             <TextBlock Text="Manage Stock" Style="{StaticResource menuButtonText}"/>
                         </StackPanel>
+                        <RadioButton.Visibility>
+                            <Binding Path="IsAdmin" Converter="{StaticResource BoolToVis}" />
+                        </RadioButton.Visibility>
                     </RadioButton>
                     <!--Movies Nav Button-->
                     <RadioButton Style="{StaticResource navMenuButton1}"
@@ -160,6 +171,9 @@
                             <icon:IconImage Icon="VideoCamera" Style="{StaticResource menuButtonIcon}"/>
                             <TextBlock Text="Manage Movies" Style="{StaticResource menuButtonText}"/>
                         </StackPanel>
+                        <RadioButton.Visibility>
+                            <Binding Path="IsAdmin" Converter="{StaticResource BoolToVis}" />
+                        </RadioButton.Visibility>
                     </RadioButton>
                     <!--Reports Nav Button-->
                     <RadioButton Style="{StaticResource navMenuButton1}"
@@ -169,6 +183,9 @@
                             <icon:IconImage Icon="File" Style="{StaticResource menuButtonIcon}"/>
                             <TextBlock Text="Generate Reports" Style="{StaticResource menuButtonText}"/>
                         </StackPanel>
+                        <RadioButton.Visibility>
+                            <Binding Path="IsAdmin" Converter="{StaticResource BoolToVis}" />
+                        </RadioButton.Visibility>
                     </RadioButton>
                     <!--Settings Nav Button-->
                     <RadioButton Style="{StaticResource navMenuButton1}"
@@ -178,6 +195,9 @@
                             <icon:IconImage Icon="Gears" Style="{StaticResource menuButtonIcon}"/>
                             <TextBlock Text="Settings" Style="{StaticResource menuButtonText}"/>
                         </StackPanel>
+                        <RadioButton.Visibility>
+                            <Binding Path="IsAdmin" Converter="{StaticResource BoolToVis}" />
+                        </RadioButton.Visibility>
                     </RadioButton>
                 </StackPanel>
             </Border>

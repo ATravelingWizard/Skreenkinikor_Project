@@ -25,7 +25,7 @@ namespace Skreenkinikor_Project.View
         {
             InitializeComponent();
         }
-
+        //This nonsense is here to allow the program to use Windows built in window sizing and controls (do not touch pls)
         [DllImport("user32.dll")]
         public static extern IntPtr SendMessage(IntPtr hWnd, int wMsg, int wParam, int lParam);
 
@@ -60,6 +60,6 @@ namespace Skreenkinikor_Project.View
             {
                 this.WindowState = WindowState.Normal;
             }
-        }
+        } 
     }
 }

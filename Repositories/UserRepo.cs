@@ -25,7 +25,7 @@ namespace Skreenkinikor_Project.Repositories
             {
                 con.Open();//Opens Database
                 com.Connection = con;//Sets connection string
-                com.CommandText = "SELECT * FROM [Login_Table] WHERE Username = @username AND [Password] = @password"; //Sets command to grab username and password
+                com.CommandText = "SELECT * FROM [Login_Table] WHERE Username = @username AND [Password] = @password"; //Sets command to grab info from database
                 com.Parameters.Add("@username", SqlDbType.NVarChar).Value = cred.UserName;
                 com.Parameters.Add("@password", SqlDbType.NVarChar).Value = cred.Password;
                 validUser = com.ExecuteScalar() == null ? false : true;

@@ -20,6 +20,7 @@ namespace Skreenkinikor_Project.ViewModel
         private string _caption;
         private IconChar _icon;
         private IUserRepo _userRepo;
+        private IsAdminRepo _isAdminRepo;
         //Selects current logged in user
         public AccountModel CurrentUser 
         {
@@ -82,6 +83,7 @@ namespace Skreenkinikor_Project.ViewModel
             //Variables
             _userRepo = new UserRepo();
             CurrentUser = new AccountModel();
+            _isAdminRepo = new IsAdminRepo();
 
             //Initialize Show Commands
             ShowHomeViewCommand = new VMCommand(ExecuteHomeViewCommand);
@@ -169,12 +171,26 @@ namespace Skreenkinikor_Project.ViewModel
             {
                 CurrentUser.Username = user.Username;
                 CurrentUser.DisplayUser = $"{user.Name} {user.Lastname}";
+
+                bool isAdmin = _isAdminRepo.GetAdmin(user.Username);
+                IsAdmin = isAdmin;
             }
             else
             {
                 CurrentUser.DisplayUser = "Invalid user, not logged in!";
                 
             }    
+        }
+
+        //Visibility Modifier
+        private CheckAdminModel _checkAdmin = new CheckAdminModel();
+        public bool IsAdmin
+        {
+            get { return _checkAdmin.IsAdmin; }
+            set
+            {
+                _checkAdmin.IsAdmin = value;
+            }
         }
     }
 }
