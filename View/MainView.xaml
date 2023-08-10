@@ -14,7 +14,7 @@
         AllowsTransparency="True">
 
     <Window.DataContext>
-        <viewModel:MainViewModel/>
+        <viewModel:VMMain/>
     </Window.DataContext>
     <!--Window Resource Binding
     Add ViewModel here to bind to Display view-->
@@ -281,17 +281,14 @@
                                     FlowDirection="RightToLeft"
                                     VerticalAlignment="Center"
                                     Margin="0,0,10,0">
-                            <!--Logout Dropdown icon-->
-                            <Button Style="{StaticResource userControlButton}"
-                                    Tag="{StaticResource buttonColor1}">
-                                <icon:IconImage Icon="AngleDown" Width="12" Style="{StaticResource userControlIcon}"/>
-                            </Button>
                             <!--Active user info block-->
-                            <TextBlock Text="{Binding CurrentUser.DisplayUser}"
-                                       Foreground="{StaticResource titleColor1}"
+                            <TextBlock Foreground="{StaticResource titleColor1}"
                                        FontFamily="Montserrat"
                                        FontSize="12"
-                                       VerticalAlignment="Center"/>
+                                       VerticalAlignment="Center">
+                                <Run Text="Welcome"/>
+                                <Run Text="{Binding CurrentUser.DisplayUser}"/>
+                            </TextBlock>
                         </StackPanel>
                     </Grid>
                     <!--Window section-->

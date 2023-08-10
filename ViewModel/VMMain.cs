@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -9,10 +10,11 @@ using System.Windows.Input;
 using FontAwesome.Sharp;
 using Skreenkinikor_Project.Model;
 using Skreenkinikor_Project.Repositories;
+using Skreenkinikor_Project.View;
 
 namespace Skreenkinikor_Project.ViewModel
 {
-    public class MainViewModel : VMBase
+    public class VMMain : VMBase
     {
         //Fields to be used in methods
         private AccountModel _currentUser;
@@ -34,6 +36,7 @@ namespace Skreenkinikor_Project.ViewModel
                 OnPropertyChanged(nameof(CurrentUser));
             }
         }
+
 
         //Properties used by exec methods
         public VMBase CurrentVMChild
@@ -66,7 +69,6 @@ namespace Skreenkinikor_Project.ViewModel
                 OnPropertyChanged(nameof(Icon));
             }
         }
-
         //Init Commands (uses these commands in xaml to call children
         public ICommand ShowHomeViewCommand { get; }
         public ICommand ShowActorViewCommand { get; }
@@ -77,8 +79,10 @@ namespace Skreenkinikor_Project.ViewModel
         public ICommand ShowMoviesViewCommand { get; }
         public ICommand ShowTicketViewCommand { get; }
         public ICommand ShowStockViewCommand { get; }
+        //Logout
+        public ICommand LogoutCommand { get; }
 
-        public MainViewModel()
+        public VMMain()
         {
             //Variables
             _userRepo = new UserRepo();
@@ -100,9 +104,8 @@ namespace Skreenkinikor_Project.ViewModel
             ExecuteHomeViewCommand(null);
             LoadCurrent();
         }
+       //Execute Display Window commands
 
-        //Execute Display Window commands
-        
         private void ExcuteSettingsViewCommand(object obj)
         {
             CurrentVMChild = new VMSettings(); //Sets Child of MainView to chosen view
@@ -162,7 +165,6 @@ namespace Skreenkinikor_Project.ViewModel
             Caption = "Home";
             Icon = IconChar.Home;
         }
-
         //Load current logged in user
         private void LoadCurrent()
         {

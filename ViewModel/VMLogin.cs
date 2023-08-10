@@ -10,6 +10,7 @@ using Skreenkinikor_Project.Repositories;
 using System.Net;
 using System.Threading;
 using System.Security.Principal;
+using Skreenkinikor_Project.View;
 
 namespace Skreenkinikor_Project.ViewModel
 {
@@ -99,7 +100,7 @@ namespace Skreenkinikor_Project.ViewModel
         private void ExecuteLoginCommand(object obj)
         {
             var isUserValid = userRep.AuthUser(new NetworkCredential(Username, Password));
-            if(isUserValid == true)
+            if (isUserValid == true)
             {
                 Thread.CurrentPrincipal = new GenericPrincipal(new GenericIdentity(Username), null);
                 IsVisible = false;

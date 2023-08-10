@@ -60,6 +60,13 @@ namespace Skreenkinikor_Project.View
             {
                 this.WindowState = WindowState.Normal;
             }
-        } 
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            var mv = new LoginView();
+            mv.Show();
+            this.Close();
+        }
     }
 }
